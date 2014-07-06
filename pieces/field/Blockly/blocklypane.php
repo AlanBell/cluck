@@ -32,26 +32,19 @@
     <xml id="toolbox" >
       <category name="design">
         <block type="panel"></block>
+        <block type="calendar"></block>
         <block type="form"></block>
         <block type="field"></block>
+        <block type="query"></block>
         <block type="table"></block>
         <block type="iterate"></block>
         <block type="menu"></block>
         <block type="menu item"></block>
       </category>
-      <category name="spreadsheet">
-        <block type="test"></block>
-        <block type="expectation"></block>
-        <block type="cell_reference"></block>
-        <block type="column_offset"></block>
-        <block type="row_offset"></block>
-        <block type="rippledown"></block>
-      </category>
       <category name="general">
         <block type="math_number"></block>
         <block type="text"></block>
         <block type="static_text"></block>
-        <block type="external"></block>
         <block type="lists_create_with"></block>
       </category>
     </xml>
