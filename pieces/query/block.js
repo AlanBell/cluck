@@ -11,6 +11,8 @@ Blockly.Blocks['query'] = {
         .appendField("Projection");
     this.appendValueInput("sort")
         .appendField("Sort");
+    this.appendValueInput("skip")
+        .appendField("Skip");
     this.appendValueInput("limit")
         .appendField("Limit");
     this.appendStatementInput("content")

@@ -39,9 +39,17 @@
         <block type="table"></block>
         <block type="iterate"></block>
         <block type="menu"></block>
-        <block type="menu item"></block>
+        <block type="button group"></block>
+        <block type="button"></block>
       </category>
-      <category name="general">
+     <category name="vtiger">
+         <block type="vtigermodule"></block>
+         <block type="vtigerblock"></block>
+         <block type="vtigerfield"></block>
+         <block type="vtigerfilter"></block>
+         <block type="vtigerrelated"></block>
+     </category>
+     <category name="general">
         <block type="math_number"></block>
         <block type="text"></block>
         <block type="static_text"></block>

@@ -5,6 +5,8 @@ Blockly.Blocks['table'] = {
         .appendField("Table");
     this.appendValueInput("collection")
         .appendField("Collection");
+    this.appendValueInput("form")
+        .appendField("Form");
     this.appendValueInput("find")
         .appendField("Find");
     this.appendValueInput("sort")

@@ -125,13 +125,14 @@ class blocklyblock {
             //each path is a reference into one of our arrays
             if (array_key_exists($findnode, $this->root)) {
                 return $this->root[$findnode]->getpath($path);
+            } elseif (array_key_exists($findnode, $this->fields)) {
+                return $this->fields[$findnode];
             } elseif (array_key_exists($findnode, $this->values)) {
                 return $this->values[$findnode]->getpath($path);
             } elseif (array_key_exists($findnode, $this->statements)) {
                 return $this->statements[$findnode]->getpath($path);
             }
             //we don't go looking down 'next', that isn't path referenceable for the purpose of getting a text value
-            
         } else {
             //we reached the end of the path, return what we have.
             return "$this";

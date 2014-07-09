@@ -3,10 +3,17 @@ Blockly.Blocks['field'] = {
     this.setColour(75);
     this.appendDummyInput()
         .appendField("Field");
-    this.appendValueInput("name")
-        .appendField("Name");
-    this.appendValueInput("type")
-        .appendField("Type");
+    this.appendDummyInput("name")
+        .appendField("Name")
+        .appendField(new Blockly.FieldTextInput(""), "name");
+
+    this.appendDummyInput("type")
+        .appendField("Type")
+        .appendField(new Blockly.FieldDropdown([['Text', 'Text'], 
+                                                ['Rich Text', 'Richtext'],
+                                                ['Date', 'Date'],
+                                                ['Blockly', 'Blockly']
+]),"type" );
     this.appendValueInput("title")
         .appendField("Title");
     this.setPreviousStatement(true);

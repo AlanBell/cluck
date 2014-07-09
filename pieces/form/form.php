@@ -9,11 +9,15 @@ function renderform($block, $content, $collection = false, $object = false, $mod
     if (!$object) {
         $object = $mdb->$collection->findOne(array('_id' => new MongoId($_REQUEST['objectid'])));
     }
+    if (!$page) {
+        $page = $_REQUEST['page'];
+    }
+
     if ($mode != 'read') {
         //                              $html.="<form method=post action=?action=objectsave&collection={$collection}&objectid={$object['_id']} >";
         $html.= "<form method=post action=?action=objectsave&collection={$collection} >";
     } else {
-        $html.= "<div ondblclick='openedit(\"" . $_REQUEST['collection'] . "\",\"" . $object['_id'] . "\")'>";
+        $html.= "<div ondblclick='openedit(\"" . $page . "\",\"" . $_REQUEST['collection'] . "\",\"" . $object['_id'] . "\")'>";
     }
     $html.= render(getstatement("content", $block), $collection, $object, $mode);
     if ($mode != 'read') {

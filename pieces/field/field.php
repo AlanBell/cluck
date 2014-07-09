@@ -6,8 +6,10 @@ function renderfield($block, $content, $collection = false, $object = false, $mo
     //column mode where they just display the value
     //header mode where we only display the names, no context needed
     global $mdb;
-    $name = getvalue("name", $block);
-    $type = getvalue("type", $block) ? : "Text"; //treat field as text if not specified
+//    $name = getvalue("name", $block);
+//    $type = getvalue("type", $block) ? : "Text"; //treat field as text if not specified
+    $name = getfield("name", $block);
+    $type = getfield("type", $block) ? : "Text"; //treat field as text if not specified
     $title = getvalue("title", $block);
     //we need an object context to render a field, if we haven't been passed one then pull it from $_REQUEST
     if (!$collection) {

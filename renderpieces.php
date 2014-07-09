@@ -22,6 +22,15 @@ function getvalue($valuename, $content) {
         echo "array of content";
     }
 }
+
+function getfield($fieldname, $content) {
+    foreach ($content['field'] as $f){
+        if ($f['_name']==$fieldname){
+            return $f['__text'];
+        }
+    }
+}
+
 function getstatement($valuename, $content) {
     foreach ($content as $block) {
         if ($block['_name'] == $valuename) {

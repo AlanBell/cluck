@@ -9,7 +9,7 @@ echo $database['name']; ?></title>
         <!-- Bootstrap -->
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
-        <script                 src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+        <script                src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/themes/smoothness/jquery-ui.css" />
         <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
 <?php
@@ -31,21 +31,21 @@ foreach(glob('pieces/field/*', GLOB_ONLYDIR) as $dir) {
 
 var timer;
 var doubleclicking;
-function openread(collection,object){
-  singlefunction="singleclick(\""+ collection + "\",\"" + object +"\")";
+function openread(page,collection,object){
+  singlefunction="singleclick(\""+ page + "\",\"" + collection + "\",\"" + object +"\")";
   timer = setTimeout(singlefunction, 400);
 }
-function singleclick(collection,object){
+function singleclick(page,collection,object){
   if(!doubleclicking){
     console.log(collection,object);
-    window.location="?page="+collection+"&collection="+collection+"&objectid="+object+"&mode=read"
+    window.location="?page="+page+"&collection="+collection+"&objectid="+object+"&mode=read"
   }
 }
-function openedit(collection,object){
+function openedit(page,collection,object){
   clearTimeout(timer);
   doubleclicking=1;
   console.log(collection,object);
-  window.location="?page="+collection+"&collection="+collection+"&objectid="+object+"&mode=edit"
+  window.location="?page="+page+"&collection="+collection+"&objectid="+object+"&mode=edit"
 }
 
 var x2j=new  X2JS;
@@ -56,5 +56,5 @@ $('.datepicker').datepicker()
 
 </head>
 <body>
-        <div class="container-fluid">
+        <div class="container">
 

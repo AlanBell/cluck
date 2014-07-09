@@ -18,6 +18,7 @@ $html.="
 				right: 'month,agendaWeek,agendaDay'
 			},
 			editable: false,
+			timezone: 'local',
 			events: [
 ";
     foreach ($cursor as $object){

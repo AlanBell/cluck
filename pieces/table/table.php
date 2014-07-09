@@ -2,6 +2,7 @@
 function rendertable($block, $content, $collection = false, $object = false, $mode = "edit") {
     global $mdb;
     $collection = getvalue("collection", $block);
+    $page = getvalue("form", $block);
     if (!$collection) {
         $collection = $_REQUEST['collection'];
     }
@@ -26,7 +27,7 @@ function rendertable($block, $content, $collection = false, $object = false, $mo
     //      }
     //      $html.="</thead>";
     foreach ($objects as $object) {
-        $html.= "<tr onclick='openread(\"" . $collection . "\",\"" . $object['_id'] . "\")' ondblclick='openedit(\"" . $collection . "\",\"" . $object['_id'] . "\")'>";
+        $html.= "<tr onclick='openread(\"" . $page . "\",\"" . $collection . "\",\"" . $object['_id'] . "\")' ondblclick='openedit(\"" . $page . "\",\"" . $collection . "\",\"" . $object['_id'] . "\")'>";
         $html.= render(getstatement("content", $block), $collection, $object, "column");
         $html.= "</tr>";
     }
