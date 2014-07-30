@@ -1,0 +1,29 @@
+<script>
+//these are functions that buttons can call, some would be simple, some a bit more involved
+//would be nice to have one that runs blockly generated javascript.
+//all the functions pass in the context, bit like the render php functions
+//buttons could be on a single object (save/edit buttons)
+//buttons could be in a list view
+function Delete(event,id){
+    //when deleting a thing, we have to decide what to do after pressing the button
+    //refreshing the page might be a bad thing to do, if we have the form open
+    //does deleting really delete items or should we have a separate deleted collection or something?
+    //delete when in list view should hide the row
+    event.preventDefault();
+    event.stopPropagation();//stop the event from bubbling out to the row we are on
+    //further work on the animation would be to mark the row faded until the delete callback works or doesn't work
+    //then fade out, or restore as appropriate.
+    $.ajax('delete',{"data":{"id":id}}).done(function(){
+    //this does a smooth removal of the row, should only do this in a column context
+    $(event.target).closest('tr')
+        .children('td, th')
+        .animate({padding:0})
+        .wrapInner('<div/>')
+        .children()
+        .slideUp(function () {
+            $(event.target).closest('tr').remove();
+        });
+    });
+    return false;
+}
+</script>
