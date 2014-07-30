@@ -1,23 +1,6 @@
 <?php
-function rendertable($block, $content, $collection = false, $object = false, $mode = "edit") {
-    global $mdb;
-    $collection = getvalue("collection", $block);
-    $page = getvalue("form", $block);
-    if (!$collection) {
-        $collection = $_REQUEST['collection'];
-    }
-    $innercollection = $content['collection'];
-    $find = getvalue("find", $block);
-    $sort = getvalue("sort", $block);
-    if ($find) {
-        $objects = $mdb->$collection->find($find);
-    } else {
-        $objects = $mdb->$collection->find();
-    }
-    if ($sort) {
-        $objects->sort(array($sort => - 1)); //should use a query if one is passed
-        
-    }
+function rendertable($block, $content, $cursor = false, $object = false, $mode = "edit") {
+    $page=getvalue("form", $block);
     $html.= "<table class='table' ><tbody>";
     //table can override the collection in the default context
     //might do a table head block here at some point
@@ -26,9 +9,11 @@ function rendertable($block, $content, $collection = false, $object = false, $mo
     //              $html.="<th>$colheader</th>";
     //      }
     //      $html.="</thead>";
-    foreach ($objects as $object) {
+    $cursorinfo=$cursor->info();
+    $collection=substr($cursorinfo['ns'], strpos($cursorinfo['ns'], ".") + 1);
+    foreach ($cursor as $object) {
         $html.= "<tr onclick='openread(\"" . $page . "\",\"" . $collection . "\",\"" . $object['_id'] . "\")' ondblclick='openedit(\"" . $page . "\",\"" . $collection . "\",\"" . $object['_id'] . "\")'>";
-        $html.= render(getstatement("content", $block), $collection, $object, "column");
+        $html.= render(getstatement("content", $block), $cursor, $object, "column");
         $html.= "</tr>";
     }
     $html.= "</tbody></table>";
